@@ -3,6 +3,7 @@ body {
   min-height: 100vh;
   background-color: #000000;
   color: #ffffff;
+  font-family: 'Noto Sans', sans-serif;
 }
 
 .title {
@@ -137,4 +138,37 @@ a:hover {
   .hobby-item {
     font-size: 36px;
   }
+}
+
+.owheader {
+  text-align: center;
+  margin: 40px auto 20px;
+  padding: 16px 20px;
+}
+
+.owheader h1 {
+  margin: 0;
+  font-size: 4rem;
+  letter-spacing: 0.08em;
+  font-family: 'M PLUS Rounded 1c', 'Noto Sans', sans-serif;
+}
+
+main {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 20px 40px;
+}
+
+main h2 {
+  font-family: 'M PLUS Rounded 1c', 'Noto Sans', sans-serif;
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 1.6em 0 0.6em;
+  letter-spacing: 0.04em;
+}
+
+.owtitle {
+  text-align: left;
+  margin: 70px auto 50px;
+  padding: 100px 60px;
 }
