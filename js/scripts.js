@@ -33,3 +33,35 @@ menuItems.forEach((item) => {
         }
     });
 });
+
+// 背景動画をスクロールに応じてフェードアウトさせる
+(function() {
+    const video = document.getElementById('bg-video');
+    const hero = document.querySelector('.hero');
+    const headerOverlay = hero && hero.querySelector('.owheader');
+    if (!video || !hero) return;
+
+    let ticking = false;
+
+    function update() {
+        const rect = hero.getBoundingClientRect();
+        const heroHeight = rect.height;
+        const scrolled = Math.max(0, -rect.top);
+        const ratio = Math.min(1, scrolled / (heroHeight * 0.8));
+        const opacity = Math.max(0, 1 - ratio);
+        video.style.opacity = opacity;
+        if (headerOverlay) headerOverlay.style.opacity = opacity;
+        ticking = false;
+    }
+
+    function onScroll() {
+        if (!ticking) {
+            window.requestAnimationFrame(update);
+            ticking = true;
+        }
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    // 初期状態をセット
+    update();
+})();

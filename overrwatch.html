@@ -12,9 +12,13 @@
         <link rel="stylesheet" href="css/style.css">
     </head>
     <body>
-        <div class="owheader">
-            <h1>Overwatch</h1>
-        </div>
+        <section class="hero">
+            <iframe id="bg-video" src="https://www.youtube-nocookie.com/embed/zXvHOviRpm8?autoplay=1&mute=1&loop=1&playlist=zXvHOviRpm8&controls=0&rel=0&modestbranding=1&iv_load_policy=3&cc_load_policy=0&playsinline=1&fs=0&enablejsapi=1" frameborder="0" tabindex="-1" allow="autoplay; encrypted-media; fullscreen; picture-in-picture" allowfullscreen></iframe>
+            <a class="home-link hero-home-link" href="home.html">ホーム</a>
+            <div class="owheader">
+                <h1>Overwatch</h1>
+            </div>
+        </section>
         <main>
             <section>
                 <nav class="owtitle">
@@ -23,7 +27,9 @@
                 <p>Overwatchは、Blizzard Entertainmentが開発したチームベースのマルチプレイヤーFPSゲームです。プレイヤーは、さまざまな能力を持つヒーローキャラクターを選択し、チームで協力して目標を達成することを目的としています。</p>
             </section>
             <section>
+                <nav class="owtitle">
                 <h2>ゲームの特徴</h2>
+                </nav>
                 <ul>
                     <li>多様なヒーローキャラクター</li>
                     <li>戦略的なチームプレイ</li>
@@ -32,7 +38,27 @@
                 </ul>
             </section>
             <section>
-                <h2>私の好きなヒーロー</h2>
-                <p>私の好きなヒーローは「トレーサー」です。彼女のスピードと機動力は非常に魅力的で、戦場での立ち回りが楽しいです。</p>
+                <nav class="owtitle">
+                <h2>私の好きなヒーローとその説明</h2>
+                </nav>
+                <nav class="outbr">
+                <p>好きなヒーロー、一人目は「トレーサー」です。
+                <br>このキャラクターは初代OWのアイコンになっていたキャラクターです!
+                <br>トレーサーはゲームの中で一番の瞬間的スピードを持っており、小回りのきく移動アビリティを使って戦場を自由に駆け回ることが出来ます。
+                <br>このスキルを使って、相手の意表をついて自衛能力の低いサポートや近距離に弱いキャラクターを潰しに行くことが出来ます。
+                <br>相手に嫌がらせをいっぱいしてあげましょう！！！
+                <!-- ブリンクの説明用のボタンをつけて、押すとブリンクがどのようなアビリティなのかが分かる動画を付け加える。 -->
+                <br>
+                <br>もう一つのアビリティでは、時間を巻き戻すことができます！
+                <br>対人戦のゲームで自分だけやり直すことが出来るという珍しいアビリティです。
+                <br>このスキルがあることによって少しリスクを冒して突っ込んでも、帰ってこれたり
+                <br>エイムが合わなくて倒しきれなくても、スキルを使ってもう一度倒しに行くこともできます。
+                <br>one more chance!!!</p>
+                <!-- リコールの説明用のボタンをつけて、押すとリコールがどのようなアビリティなのかが分かる動画を付け加える。 -->
+                </nav>
+                <!-- 上の説明文を全て隠した状態にしておいて、tracer-screenshot-002の画像を出しておきながら、右側にあるボタンを押すと左側に上の説明文を表示、左側にその動画の提示をする -->
             </section>
         </main>
+        <script src="js/scripts.js"></script>
+        <script src="https://www.youtube.com/iframe_api"></script>
+        <script src="js/youtube-api.js"></script>
