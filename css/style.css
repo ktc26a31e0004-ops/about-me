@@ -39,7 +39,7 @@ body {
 .about-item,
 .game-item,
 .music-item,
-.hobby-item {
+.home-item {
   position: fixed;
   font-size: 50px;
   color: #ffffff;
@@ -79,13 +79,13 @@ body {
   transform: translate(-260%, 260%);
 }
 
-.hobby-item {
+.home-item {
   top: 50%;
   left: 50%;
   transform: translate(45%, 45%);
 }
 
-.hobby-item.active {
+.home-item.active {
   transform: translate(260%, 260%);
 }
 
@@ -140,7 +140,7 @@ a:hover {
   .about-item,
   .game-item,
   .music-item,
-  .hobby-item {
+  .home-item {
     font-size: 36px;
   }
 }
@@ -271,6 +271,133 @@ main h2 {
   letter-spacing: 0.14em;
 }
 
+.hero .ow-overview {
+  position: absolute;
+  top: 31%;
+  left: 50%;
+  z-index: 2;
+  width: min(1000px, calc(100% - 48px));
+  transform: translateX(-50%);
+  color: #ffffff;
+  background: rgba(0, 0, 0, 0.48);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 18px;
+  box-sizing: border-box;
+  pointer-events: auto;
+}
+
+.hero .ow-overview .owtitle {
+  padding-bottom: 8px;
+}
+
+.hero .ow-overview .hero-intro-text {
+  padding: 0 20px 22px;
+}
+
+.hero .ow-overview .hero-intro-text p {
+  line-height: 1.8;
+}
+
+.genshin-hero::after {
+  background: linear-gradient(180deg, rgba(7, 22, 38, 0.28), rgba(8, 31, 45, 0.72));
+}
+
+.genshin-hero .owheader h1 {
+  color: #d9fbff;
+  text-shadow: 0 3px 24px rgba(45, 203, 220, 0.75);
+}
+
+.genshin-kicker {
+  margin: 0 0 8px;
+  color: #9eeaf0;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+}
+
+.genshin-hero .ow-overview {
+  background: rgba(5, 25, 38, 0.62);
+  border-color: rgba(158, 234, 240, 0.3);
+}
+
+body.genshin-page {
+  background: #000000;
+  color: #ffffff;
+  font-family: 'Noto Serif JP', 'Yu Mincho', serif;
+}
+
+body.genshin-page .genshin-hero .owheader h1,
+body.genshin-page main h1,
+body.genshin-page main h2 {
+  font-family: 'Noto Serif JP', 'Yu Mincho', serif;
+  color: #ffffff;
+  font-weight: 600;
+  text-shadow: 0 2px 18px rgba(255, 255, 255, 0.28);
+}
+
+body.genshin-page .genshin-hero .owheader h1 {
+  position: relative;
+  padding: 0 0.32em 0.14em;
+  letter-spacing: 0.28em;
+  line-height: 1.15;
+}
+
+body.genshin-page .genshin-hero .owheader h1::after {
+  content: '';
+  position: absolute;
+  left: 22%;
+  right: 8%;
+  bottom: -0.12em;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #ffffff 18%, #a8f2f4 82%, transparent);
+  box-shadow: 0 0 12px rgba(168, 242, 244, 0.9);
+}
+
+body.genshin-page .genshin-kicker {
+  font-family: 'Noto Sans', sans-serif;
+  color: #ffffff;
+  opacity: 0.82;
+  letter-spacing: 0.3em;
+}
+
+body.genshin-page .owtitle h1,
+body.genshin-page .owtitle h2,
+body.genshin-page .charaname h2 {
+  color: #ffffff;
+}
+
+body.genshin-page .hero-intro-card,
+body.genshin-page .ability-panel {
+  background: linear-gradient(120deg, rgba(255, 255, 255, 0.13), rgba(140, 220, 225, 0.07));
+  border-color: rgba(255, 255, 255, 0.3);
+  box-shadow: 0 12px 34px rgba(0, 0, 0, 0.32), inset 0 1px rgba(255, 255, 255, 0.18);
+}
+
+body.genshin-page .genshin-text-card,
+body.genshin-page .genshin-text-panel {
+  grid-template-columns: 1fr;
+}
+
+body.genshin-page .genshin-text-card .hero-intro-text p,
+body.genshin-page .genshin-text-panel .ability-panel__text p {
+  max-width: 78ch;
+  line-height: 2;
+}
+
+body.genshin-page .ability-button {
+  border-color: rgba(255, 255, 255, 0.55);
+  background: rgba(255, 255, 255, 0.06);
+  color: #ffffff;
+  font-family: 'Noto Serif JP', 'Yu Mincho', serif;
+}
+
+body.genshin-page .ability-button.is-active {
+  background: #ffffff;
+  border-color: #ffffff;
+  color: #0a3545;
+  box-shadow: 0 0 16px rgba(255, 255, 255, 0.38);
+}
+
 @media (max-width: 640px) {
   .hero-home-link {
     top: 16px;
@@ -281,6 +408,16 @@ main h2 {
 
   .hero .owheader {
     padding: 20px 24px;
+  }
+
+  .hero .ow-overview {
+    top: 28%;
+    width: calc(100% - 24px);
+  }
+
+  .hero .ow-overview .hero-intro-text p {
+    line-height: 1.65;
+    font-size: 0.9rem;
   }
 
   .hero .owheader h1 {
@@ -320,7 +457,9 @@ main h2 {
 }
 
 .hero-intro-image img,
-.ability-panel__image img {
+.hero-intro-image video,
+.ability-panel__image img,
+.ability-panel__image video {
   width: 100%;
   height: 420px;
   object-fit: contain;
@@ -384,7 +523,9 @@ main h2 {
   }
 
   .hero-intro-image img,
-  .ability-panel__image img {
+  .hero-intro-image video,
+  .ability-panel__image img,
+  .ability-panel__image video {
     height: 200px;
   }
 }

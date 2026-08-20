@@ -1,4 +1,4 @@
-const menuItems = Array.from(document.querySelectorAll('.about-item, .game-item, .music-item, .hobby-item'));
+const menuItems = Array.from(document.querySelectorAll('.about-item, .game-item, .music-item, .home-item'));
 
 menuItems.forEach((item) => {
     item.addEventListener('click', (event) => {
@@ -66,23 +66,34 @@ menuItems.forEach((item) => {
     update();
 })();
 
-// トレーサーのアビリティ切り替え
+// ヒーローごとのアビリティ切り替え
 (function() {
-    const buttons = Array.from(document.querySelectorAll('.ability-button'));
-    const panels = Array.from(document.querySelectorAll('.ability-panel'));
+    document.querySelectorAll('.ability-switcher').forEach((switcher) => {
+        const buttons = Array.from(switcher.querySelectorAll('.ability-button'));
+        const panels = Array.from(switcher.querySelectorAll('.ability-panel'));
 
-    if (!buttons.length || !panels.length) return;
+        if (!buttons.length || !panels.length) return;
 
-    buttons.forEach((button) => {
-        button.addEventListener('click', () => {
-            const targetId = button.getAttribute('data-target');
+        const firstButton = buttons[0];
+        const firstTargetId = firstButton.getAttribute('data-target');
+        buttons.forEach((button) => {
+            button.classList.toggle('is-active', button === firstButton);
+        });
+        panels.forEach((panel) => {
+            panel.classList.toggle('is-active', panel.id === firstTargetId);
+        });
 
-            buttons.forEach((item) => {
-                item.classList.toggle('is-active', item === button);
-            });
+        buttons.forEach((button) => {
+            button.addEventListener('click', () => {
+                const targetId = button.getAttribute('data-target');
 
-            panels.forEach((panel) => {
-                panel.classList.toggle('is-active', panel.id === targetId);
+                buttons.forEach((item) => {
+                    item.classList.toggle('is-active', item === button);
+                });
+
+                panels.forEach((panel) => {
+                    panel.classList.toggle('is-active', panel.id === targetId);
+                });
             });
         });
     });
