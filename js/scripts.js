@@ -65,3 +65,27 @@ menuItems.forEach((item) => {
     // 初期状態をセット
     update();
 })();
+
+// トレーサーのアビリティ切り替え
+(function() {
+    const buttons = Array.from(document.querySelectorAll('.ability-button'));
+    const panels = Array.from(document.querySelectorAll('.ability-panel'));
+
+    if (!buttons.length || !panels.length) return;
+
+    buttons.forEach((button) => {
+        button.addEventListener('click', () => {
+            const targetId = button.getAttribute('data-target');
+
+            buttons.forEach((item) => {
+                item.classList.toggle('is-active', item === button);
+            });
+
+            panels.forEach((panel) => {
+                panel.classList.toggle('is-active', panel.id === targetId);
+            });
+        });
+    });
+})();
+
+
