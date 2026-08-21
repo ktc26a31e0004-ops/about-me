@@ -65,6 +65,24 @@ document.querySelectorAll('.profile-card').forEach((card) => {
     });
 });
 
+document.querySelectorAll('.music-card').forEach((card) => {
+    const flipCard = () => {
+        const isFlipped = card.classList.toggle('is-flipped');
+        card.setAttribute('aria-expanded', String(isFlipped));
+    };
+
+    card.addEventListener('click', (event) => {
+        if (event.target.closest('iframe')) return;
+        flipCard();
+    });
+    card.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter' || event.key === ' ') {
+            event.preventDefault();
+            flipCard();
+        }
+    });
+});
+
 // 背景動画をスクロールに応じてフェードアウトさせる
 (function() {
     const video = document.getElementById('bg-video');
