@@ -14,26 +14,164 @@ body {
 .title {
   background-color: #000000;
   color: #ffffff;
-  padding: 70px 40px;
+  min-height: 100vh;
+}
+
+.site-header,
+.page-header {
+  position: relative;
+  z-index: 20;
+  background: #171717;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.site-header {
+  width: 100%;
 }
 
 .page-header {
   max-width: 960px;
   margin: 0 auto;
   width: 100%;
-  padding: 20px 40px;
-  min-height: 70px;
+  padding: 16px 24px;
+  min-height: 64px;
   box-sizing: border-box;
 }
 
-.page-header h1 {
+.site-header .page-header h1 {
   margin: 0;
 }
 
-.home-link {
+.site-header .home-link {
   font-size: 32px;
   font-weight: bold;
   white-space: nowrap;
+}
+
+.site-header .page-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+}
+
+.site-header .header-brand {
+  order: 2;
+}
+
+.site-header .header-nav {
+  order: 1;
+  margin-left: 0;
+  display: contents;
+}
+
+.site-header .main-nav {
+  display: contents;
+}
+
+.site-header .main-nav > li {
+  position: relative;
+  order: 3;
+  min-width: 96px;
+  text-align: center;
+}
+
+.site-header .main-nav > li.home-item,
+.site-header .main-nav > li:not(.dropdown):not(.home-item) {
+  order: 1;
+}
+
+.site-header .main-nav > li.game-item,
+.site-header .main-nav > li.dropdown:first-child {
+  order: 3;
+}
+
+.site-header .main-nav > li.music-item,
+.site-header .main-nav > li.dropdown:nth-child(2) {
+  order: 4;
+}
+
+.site-header .about-item,
+.site-header .game-item,
+.site-header .music-item,
+.site-header .home-item {
+  position: relative;
+  top: auto;
+  left: auto;
+  transform: none;
+  transition: none;
+  font-size: 1rem;
+  z-index: auto;
+}
+
+.site-header .main-nav > li > a {
+  width: 100%;
+  font-size: 1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 8px 0;
+}
+
+.site-header .home-link {
+  display: block;
+  min-width: 96px;
+  text-align: center;
+  font-size: 1rem;
+  text-transform: uppercase;
+}
+
+.site-header .dropdown-menu {
+  left: 50%;
+}
+
+.welcome-message {
+  position: relative;
+  z-index: 2;
+  padding: 42px 24px 0;
+  text-align: center;
+  background: #000000;
+}
+
+.welcome-kicker {
+  margin: 0 0 10px;
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+}
+
+.welcome-message h2 {
+  position: relative;
+  display: inline-block;
+  margin: 0;
+  color: #ffffff;
+  font-family: 'Noto Sans', sans-serif;
+  font-size: clamp(1.8rem, 4vw, 3.4rem);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-shadow: 0 0 22px rgba(255, 255, 255, 0.24);
+}
+
+.welcome-message h2::after {
+  content: '';
+  position: absolute;
+  right: 8%;
+  bottom: -12px;
+  left: 8%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #8944ff, #ffffff, transparent);
+  box-shadow: 0 0 12px rgba(137, 68, 255, 0.75);
+}
+
+@media (max-width: 640px) {
+  .welcome-message {
+    padding-top: 30px;
+  }
+
+  .welcome-kicker {
+    font-size: 0.6rem;
+    letter-spacing: 0.18em;
+  }
 }
 
 .about-item,
@@ -116,7 +254,11 @@ a:hover {
   transform: translateX(-50%) translateY(8px);
   margin-top: 0;
   padding: 8px 12px;
-  background: rgba(0, 0, 0, 0.9);
+  background: rgba(15, 15, 15, 0.72);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.45);
   list-style: none;
   opacity: 0;
   visibility: hidden;
@@ -136,12 +278,276 @@ a:hover {
   display: block;
 }
 
+.site-footer {
+  margin-top: 48px;
+  padding: 28px 24px;
+  text-align: center;
+  background: #111111;
+  border-top: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.site-footer h2 {
+  margin: 0 0 10px;
+  font-size: 1.2rem;
+}
+
+.site-footer p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.site-footer a {
+  color: #ffffff;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.site-footer a:hover {
+  color: #8944ff;
+}
+
+.profile-page {
+  background: #050505;
+}
+
+.profile-main {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 0.85fr);
+  grid-template-rows: minmax(280px, 1fr) minmax(280px, 1fr);
+  grid-template-areas:
+    'intro likes'
+    'hobbies personality';
+  gap: 28px;
+  width: min(1180px, calc(100% - 48px));
+  min-height: calc(100vh - 145px);
+  margin: 0 auto;
+  padding: 64px 0 72px;
+  box-sizing: border-box;
+}
+
+.profile-intro {
+  grid-area: intro;
+  align-self: start;
+  padding: 20px 0;
+}
+
+.profile-label,
+.profile-card-number {
+  margin: 0 0 18px;
+  color: rgba(255, 255, 255, 0.52);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.24em;
+}
+
+.profile-intro h1 {
+  margin: 0;
+  color: #ffffff;
+  font-family: 'M PLUS Rounded 1c', 'Noto Sans', sans-serif;
+  font-size: clamp(2.8rem, 6vw, 5.6rem);
+  font-weight: 500;
+  line-height: 1.12;
+  letter-spacing: 0.04em;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.06);
+}
+
+.profile-intro h1 span {
+  display: inline-block;
+  margin-top: 12px;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 0.48em;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+}
+
+.profile-card {
+  position: relative;
+  perspective: 1200px;
+  min-height: 280px;
+  overflow: hidden;
+  box-sizing: border-box;
+  cursor: pointer;
+  outline: none;
+}
+
+.profile-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 280px;
+  transition: transform 0.75s cubic-bezier(0.2, 0.7, 0.2, 1);
+  transform-style: preserve-3d;
+}
+
+.profile-card.is-flipped .profile-card-inner {
+  transform: rotateY(180deg);
+}
+
+.profile-card-face {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 32px;
+  overflow: hidden;
+  box-sizing: border-box;
+  background: #b8b8b8;
+  border: 1px solid rgba(255, 255, 255, 0.42);
+  color: #101010;
+  box-shadow: 10px 10px 0 rgba(255, 255, 255, 0.08);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.profile-card-face::before {
+  content: '';
+  position: absolute;
+  top: -30%;
+  right: -12%;
+  width: 58%;
+  height: 90%;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  transform: rotate(24deg);
+}
+
+.profile-card-back {
+  transform: rotateY(180deg);
+  background: #777777;
+}
+
+.profile-card:focus-visible .profile-card-front,
+.profile-card:focus-visible .profile-card-back {
+  border-color: #ffffff;
+  box-shadow: 0 0 0 3px rgba(137, 68, 255, 0.75), 10px 10px 0 rgba(255, 255, 255, 0.08);
+}
+
+.profile-card-number {
+  position: absolute;
+  top: 28px;
+  right: 30px;
+  margin: 0;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.profile-card h2,
+.profile-card p {
+  position: relative;
+  z-index: 1;
+}
+
+.profile-card h2 {
+  position: absolute;
+  top: 28px;
+  left: 30px;
+  margin: 0;
+  font-size: clamp(1.5rem, 2.5vw, 2.3rem);
+  letter-spacing: 0.08em;
+}
+
+.profile-card-face > p:not(.profile-card-number) {
+  max-width: 38ch;
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 600;
+  line-height: 1.9;
+  text-align: center;
+}
+
+.profile-card-hint {
+  position: absolute;
+  bottom: 28px;
+  z-index: 1;
+  left: 50%;
+  transform: translateX(-50%);
+  color: rgba(0, 0, 0, 0.55);
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+}
+
+.profile-card-likes {
+  grid-area: likes;
+}
+
+.profile-card-hobbies {
+  grid-area: hobbies;
+}
+
+.profile-card-personality {
+  grid-area: personality;
+}
+
+.center-nav {
+  position: relative;
+  min-height: calc(100vh - 65px);
+  display: grid;
+  place-items: center;
+}
+
+.center-nav .main-nav > li {
+  position: absolute;
+  top: calc(50% - 180px);
+}
+
 @media (max-width: 640px) {
+  .profile-main {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    grid-template-areas:
+      'intro'
+      'likes'
+      'hobbies'
+      'personality';
+    width: min(100% - 32px, 560px);
+    gap: 20px;
+    padding: 36px 0 48px;
+  }
+
+  .profile-intro {
+    padding: 8px 0 20px;
+  }
+
+  .profile-intro h1 {
+    font-size: clamp(2.7rem, 13vw, 4.5rem);
+  }
+
+  .profile-card {
+    min-height: 230px;
+  }
+
+  .profile-card-inner {
+    min-height: 230px;
+  }
+
+  .profile-card-face {
+    padding: 26px;
+  }
+
+  .site-header .page-header {
+    justify-content: flex-start;
+    gap: 8px;
+    overflow-x: auto;
+  }
+
+  .site-header .main-nav {
+    display: contents;
+  }
+
+  .site-header .home-link {
+    font-size: 26px;
+  }
+
   .about-item,
   .game-item,
   .music-item,
   .home-item {
     font-size: 36px;
+  }
+
+  .center-nav .main-nav > li {
+    top: calc(50% - 100px);
   }
 }
 
@@ -324,6 +730,10 @@ body.genshin-page {
   background: #000000;
   color: #ffffff;
   font-family: 'Noto Serif JP', 'Yu Mincho', serif;
+}
+
+body.genshin-page .site-header {
+  font-family: 'Noto Sans', sans-serif;
 }
 
 body.genshin-page .genshin-hero .owheader h1,

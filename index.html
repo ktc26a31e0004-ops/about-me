@@ -11,11 +11,11 @@
 <!-- エイムしてくださいという文を上に表示し、ゲームや音楽、自己紹介の文のボタンを押したときに、中心から離れていき、マウスカーソルから逃げるようにする。画面外に行く前に合わせましょうの文字も付け加える。 -->
 <!-- ダルくなってきた人ように、諦める。というボタンを左上に付け加える。 -->    
 <body>
-        <div class="title">
-            <header class="page-header wrapper">
+        <header class="site-header">
+            <div class="page-header wrapper">
                 <div class="header-brand">
-                    <h1 class="align-center about-item">
-                        <a class="home-link" href="index.html">about me</a>
+                    <h1>
+                        <a class="home-link" href="about-me.html">PROFILE</a>
                     </h1>
                 </div>
                 <nav class="header-nav">
@@ -30,15 +30,48 @@
                         <li class="dropdown music-item">
                             <a class="dropdown-toggle" href="#">music</a>
                             <ul class="dropdown-menu">
-                                <li><a href="Mrs.GREENAPPLE.html">Mrs. GREEN APPLE</a></li>
-                                <li><a href="gensin.html">YOASOBI</a></li>
+                                <li><a href="mrs.greenapple.html">Mrs. GREEN APPLE</a></li>
+                                <li><a href="yoasobi.html">YOASOBI</a></li>
                             </ul>
                         </li>
-                        <li class="home-item"><a href="index.html">ホーム</a></li>
+                        <li class="home-item"><a href="index.html">home</a></li>
                     </ul>
                 </nav>
-            </header>
-        </div>
+            </div>
+        </header>
+
+        <br><br><br><br>
+        <section class="welcome-message" aria-label="Welcome message">
+            <h2>Welcome to my website!!</h2>
+        </section>
+
+        <main class="title">
+            <nav class="center-nav" aria-label="メインナビゲーション">
+                <ul class="main-nav font-english">
+                    <li class="about-item"><a href="about-me.html">profile</a></li>
+                    <li class="dropdown game-item">
+                        <a class="dropdown-toggle" href="#">game</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="overrwatch.html">Overwatch</a></li>
+                            <li><a href="gensin.html">原神</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown music-item">
+                        <a class="dropdown-toggle" href="#">music</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="mrs.greenapple.html">Mrs. GREEN APPLE</a></li>
+                            <li><a href="yoasobi.html">YOASOBI</a></li>
+                        </ul>
+                    </li>
+                    <li class="home-item"><a href="index.html">home</a></li>
+                </ul>
+            </nav>
+        </main>
+
+        <footer class="site-footer">
+            <h2>連絡先</h2>
+            <p><a href="mailto:example@example.com">example@example.com</a></p>
+        </footer>
 
         <script src="js/scripts.js"></script>
     </body>

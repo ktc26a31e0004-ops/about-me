@@ -1,35 +1,66 @@
-const menuItems = Array.from(document.querySelectorAll('.about-item, .game-item, .music-item, .home-item'));
+const menuItems = Array.from(document.querySelectorAll('.main-nav > li.dropdown'));
 
 menuItems.forEach((item) => {
-    item.addEventListener('click', (event) => {
-        const href = item.querySelector('a')?.getAttribute('href') || '#';
-        const isDropdownItem = item.classList.contains('game-item') || item.classList.contains('music-item');
+    const toggle = item.querySelector('.dropdown-toggle');
+    const dropdown = item.querySelector('.dropdown-menu');
+    if (!toggle || !dropdown) return;
 
-        if (!isDropdownItem) {
-            event.preventDefault();
-        }
+    toggle.addEventListener('click', (event) => {
+        event.preventDefault();
+        const shouldOpen = !dropdown.classList.contains('is-open');
 
         menuItems.forEach((other) => {
-            other.classList.remove('active');
             const dropdown = other.querySelector('.dropdown-menu');
             if (dropdown) {
                 dropdown.classList.remove('is-open');
             }
         });
 
+        if (shouldOpen) dropdown.classList.add('is-open');
+    });
+});
+
+const centerMenuItems = Array.from(document.querySelectorAll('.center-nav .main-nav > li'));
+
+centerMenuItems.forEach((item) => {
+    item.addEventListener('click', (event) => {
+        const link = item.querySelector(':scope > a');
+        const href = link?.getAttribute('href') || '#';
+        const isDropdownItem = item.classList.contains('dropdown');
+
+        if (!isDropdownItem) event.preventDefault();
+
+        centerMenuItems.forEach((other) => {
+            other.classList.remove('active');
+            other.querySelector('.dropdown-menu')?.classList.remove('is-open');
+        });
+
         item.classList.add('active');
 
         if (isDropdownItem) {
-            const dropdown = item.querySelector('.dropdown-menu');
-            if (dropdown) {
-                window.setTimeout(() => {
-                    dropdown.classList.add('is-open');
-                }, 450);
-            }
-        } else if (href && href !== '#') {
+            window.setTimeout(() => {
+                item.querySelector('.dropdown-menu')?.classList.add('is-open');
+            }, 450);
+        } else if (href !== '#') {
             window.setTimeout(() => {
                 window.location.href = href;
             }, 650);
+        }
+    });
+});
+
+document.querySelectorAll('.profile-card').forEach((card) => {
+    const flipCard = () => {
+        const isFlipped = card.classList.toggle('is-flipped');
+        card.setAttribute('aria-expanded', String(isFlipped));
+        card.setAttribute('aria-label', isFlipped ? '詳細を閉じる' : '詳細を表示');
+    };
+
+    card.addEventListener('click', flipCard);
+    card.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter' || event.key === ' ') {
+            event.preventDefault();
+            flipCard();
         }
     });
 });
