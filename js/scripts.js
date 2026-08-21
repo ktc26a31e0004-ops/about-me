@@ -83,6 +83,22 @@ document.querySelectorAll('.music-card').forEach((card) => {
     });
 });
 
+document.querySelectorAll('.book-card').forEach((card) => {
+    const leftPage = card.querySelector('.book-page-left');
+    const flipCard = () => {
+        const isFlipped = card.classList.toggle('is-flipped');
+        card.setAttribute('aria-expanded', String(isFlipped));
+    };
+
+    leftPage?.addEventListener('click', flipCard);
+    card.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter' || event.key === ' ') {
+            event.preventDefault();
+            flipCard();
+        }
+    });
+});
+
 // 背景動画をスクロールに応じてフェードアウトさせる
 (function() {
     const video = document.getElementById('bg-video');

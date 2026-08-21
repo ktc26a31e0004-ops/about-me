@@ -702,6 +702,176 @@ a:hover {
   box-shadow: 0 0 0 4px rgba(213, 245, 197, 0.85), 0 18px 38px rgba(0, 0, 0, 0.38);
 }
 
+.yoasobi-page {
+  background-color: #090609;
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.78), rgba(0, 0, 0, 0.78)),
+    url('../yoasobi.jpg');
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+.yoasobi-main {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-rows: auto minmax(360px, 1fr);
+  grid-template-areas:
+    'title night'
+    'encore hit';
+  gap: 56px;
+  width: min(1180px, calc(100% - 48px));
+  min-height: calc(100vh - 145px);
+  margin: 0 auto;
+  padding: 64px 0 72px;
+  box-sizing: border-box;
+}
+
+.yoasobi-title {
+  grid-area: title;
+  align-self: end;
+  padding: 10px 0 18px 12px;
+  transform: translateY(-34px);
+}
+
+.yoasobi-title p {
+  margin: 0 0 10px;
+  color: rgba(255, 255, 255, 0.52);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+}
+
+.yoasobi-title h1 {
+  margin: 0;
+  color: #ffffff;
+  font-family: 'M PLUS Rounded 1c', 'Noto Sans', sans-serif;
+  font-size: clamp(2.4rem, 5vw, 5rem);
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-shadow: 0 0 18px rgba(255, 100, 170, 0.28);
+}
+
+.book-card {
+  position: relative;
+  min-height: 360px;
+  perspective: 1400px;
+  cursor: pointer;
+  outline: none;
+}
+
+.book-card-night { grid-area: night; }
+.book-card-encore { grid-area: encore; }
+.book-card-hit { grid-area: hit; }
+
+.book-card-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 100%;
+  height: 100%;
+  min-height: 360px;
+  transition: transform 0.85s cubic-bezier(0.2, 0.7, 0.2, 1);
+  transform-style: preserve-3d;
+}
+
+.book-card.is-flipped .book-card-inner {
+  transform: none;
+}
+
+.book-page {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-width: 0;
+  padding: 34px 30px;
+  box-sizing: border-box;
+  overflow: hidden;
+  background: #21101b;
+  border: 3px solid #ec6fae;
+  color: #ffffff;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  box-shadow: 0 16px 34px rgba(0, 0, 0, 0.4);
+}
+
+.book-page-left {
+  border-radius: 16px 8px 8px 16px;
+}
+
+.book-page-right {
+  border-left-width: 3px;
+  border-radius: 8px 16px 16px 8px;
+  background: #180d15;
+  transform: rotateY(180deg);
+  transform-origin: left center;
+  transition: transform 0.85s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.book-card.is-flipped .book-page-right {
+  transform: rotateY(0);
+}
+
+.book-page::after {
+  content: '';
+  position: absolute;
+  inset: 12px;
+  border: 1px solid rgba(255, 150, 200, 0.28);
+  border-radius: 10px;
+  pointer-events: none;
+}
+
+.book-page h2,
+.book-page p,
+.book-page span {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+}
+
+.book-page h2 {
+  position: absolute;
+  top: 32px;
+  left: 50%;
+  width: calc(100% - 50px);
+  margin: 0;
+  color: #ffd0e5;
+  font-size: clamp(1.2rem, 2.2vw, 2rem);
+  letter-spacing: 0.08em;
+  transform: translateX(-50%);
+}
+
+.book-page p:not(.book-card-number) {
+  max-width: 22ch;
+  margin: 0;
+  line-height: 1.9;
+}
+
+.book-card-number {
+  position: absolute;
+  top: 32px;
+  right: 28px;
+  margin: 0;
+  color: rgba(255, 180, 215, 0.7);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+}
+
+.book-page span {
+  position: absolute;
+  bottom: 28px;
+  color: rgba(255, 180, 215, 0.7);
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+}
+
+.book-card:focus-visible .book-page {
+  box-shadow: 0 0 0 4px rgba(255, 190, 220, 0.8), 0 16px 34px rgba(0, 0, 0, 0.4);
+}
+
 .center-nav {
   position: relative;
   min-height: calc(100vh - 65px);
@@ -715,6 +885,32 @@ a:hover {
 }
 
 @media (max-width: 640px) {
+  .yoasobi-main {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    grid-template-areas:
+      'title'
+      'night'
+      'encore'
+      'hit';
+    width: min(100% - 32px, 560px);
+    gap: 32px;
+    padding: 36px 0 48px;
+  }
+
+  .yoasobi-title {
+    padding-left: 0;
+  }
+
+  .book-card,
+  .book-card-inner {
+    min-height: 330px;
+  }
+
+  .book-page {
+    padding: 28px 20px;
+  }
+
   .music-main {
     grid-template-columns: 1fr;
     grid-template-rows: auto;
