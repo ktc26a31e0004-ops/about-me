@@ -99,6 +99,41 @@ document.querySelectorAll('.book-card').forEach((card) => {
     });
 });
 
+const slider = document.querySelector('.feature-slider');
+if (slider) {
+    const slides = Array.from(slider.querySelectorAll('.feature-slide'));
+    const dots = Array.from(slider.querySelectorAll('.feature-slider-dot'));
+    let activeIndex = 0;
+
+    const showSlide = (nextIndex) => {
+        activeIndex = (nextIndex + slides.length) % slides.length;
+
+        slides.forEach((slide, index) => {
+            const isActive = index === activeIndex;
+            slide.classList.toggle('is-active', isActive);
+            const video = slide.querySelector('video');
+            if (!video) return;
+            if (isActive) {
+                video.currentTime = 0;
+                video.play().catch(() => {});
+            } else {
+                video.pause();
+            }
+        });
+
+        dots.forEach((dot, index) => {
+            dot.classList.toggle('is-active', index === activeIndex);
+        });
+    };
+
+    dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => showSlide(index));
+    });
+
+    showSlide(0);
+    window.setInterval(() => showSlide(activeIndex + 1), 7000);
+}
+
 // 背景動画をスクロールに応じてフェードアウトさせる
 (function() {
     const video = document.getElementById('bg-video');

@@ -278,6 +278,72 @@ a:hover {
   display: block;
 }
 
+.feature-slider {
+  position: relative;
+  width: min(920px, calc(100vw - 48px));
+  margin: 32px auto 0;
+  padding: 0 0 12px;
+  z-index: 1;
+}
+
+.feature-slider-track {
+  position: relative;
+  width: 100%;
+  height: clamp(220px, 30vw, 420px);
+  overflow: hidden;
+  border-radius: 24px;
+  background: #0d0d0d;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.52);
+}
+
+.feature-slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.8s ease, visibility 0.8s ease;
+}
+
+.feature-slide.is-active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.feature-slide video,
+.feature-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  background: #000000;
+}
+
+.feature-slider-dots {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.feature-slider-dot {
+  width: 12px;
+  height: 12px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.35);
+  box-shadow: none;
+  cursor: pointer;
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.feature-slider-dot.is-active {
+  background: #ffffff;
+  transform: scale(1.18);
+}
+
 .site-footer {
   margin-top: 48px;
   padding: 28px 24px;
@@ -397,8 +463,40 @@ a:hover {
   border: 1px solid rgba(255, 255, 255, 0.42);
   color: #101010;
   box-shadow: 10px 10px 0 rgba(255, 255, 255, 0.08);
+  opacity: 1;
+  visibility: visible;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
+  transition: opacity 0.2s ease, visibility 0.2s ease;
+}
+
+.profile-card-front {
+  z-index: 2;
+  display: flex;
+}
+
+.profile-card-back {
+  z-index: 1;
+  display: flex;
+  opacity: 1;
+  visibility: visible;
+  background: #777777;
+}
+
+.profile-card.is-flipped .profile-card-front {
+  display: none !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+  z-index: 1 !important;
+}
+
+.profile-card.is-flipped .profile-card-back {
+  display: flex !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  z-index: 2 !important;
+  backface-visibility: visible !important;
 }
 
 .profile-card-face::before {
@@ -572,8 +670,24 @@ a:hover {
   background: #18251b;
   color: #ffffff;
   box-shadow: 0 0 0 8px rgba(97, 168, 63, 0.08), 0 18px 38px rgba(0, 0, 0, 0.38);
+  opacity: 1;
+  visibility: visible;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
+  transition: opacity 0.2s ease, visibility 0.2s ease;
+}
+
+.music-card-front {
+  z-index: 2;
+  display: flex;
+}
+
+.music-card.is-flipped .music-card-front {
+  display: none !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+  z-index: 1 !important;
 }
 
 .music-card-face::before {
@@ -607,10 +721,20 @@ a:hover {
 }
 
 .music-card-back {
+  z-index: 1;
+  display: flex;
   transform: rotateY(180deg);
   background: #101810;
   justify-content: center;
   text-align: center;
+}
+
+.music-card.is-flipped .music-card-back {
+  display: flex !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  z-index: 2 !important;
+  backface-visibility: visible !important;
 }
 
 .music-card h2,
