@@ -401,26 +401,19 @@ a:hover {
 }
 
 .contact-shell {
-  width: min(1120px, calc(100% - 40px));
+  width: min(980px, calc(100% - 40px));
   margin: 48px auto 0;
   padding: 0 0 52px;
 }
 
 .contact-panel {
-  display: grid;
-  grid-template-columns: minmax(220px, 280px) minmax(0, 1fr);
+  display: block;
   min-height: 640px;
   background: rgba(18, 22, 29, 0.9);
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 28px;
   overflow: hidden;
   box-shadow: 0 28px 70px rgba(0, 0, 0, 0.42);
-}
-
-.contact-sidebar {
-  background: rgba(13, 16, 22, 0.92);
-  border-right: 1px solid rgba(255, 255, 255, 0.08);
-  padding: 24px 18px;
 }
 
 .sidebar-header {
@@ -515,6 +508,40 @@ a:hover {
   background: rgba(9, 12, 18, 0.9);
 }
 
+.chat-window--single {
+  min-height: 640px;
+}
+
+.contact-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 18px 22px 12px;
+  background: rgba(14, 17, 25, 0.88);
+}
+
+.contact-topbar__label {
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.contact-topbar__mail {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 72px;
+  padding: 8px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.03);
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #ffffff;
+}
+
 .chat-header {
   display: flex;
   align-items: center;
@@ -522,6 +549,10 @@ a:hover {
   padding: 18px 22px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   background: rgba(14, 17, 25, 0.88);
+}
+
+.chat-header--minimal {
+  border-bottom: none;
 }
 
 .chat-user {
@@ -559,6 +590,24 @@ a:hover {
   background:
     linear-gradient(rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.02)),
     rgba(10, 14, 20, 0.88);
+}
+
+.chat-body--empty {
+  justify-content: center;
+  align-items: center;
+  background: rgba(8, 12, 18, 0.9);
+}
+
+.empty-state {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  color: rgba(255, 255, 255, 0.44);
+  font-size: 0.95rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
 .message {
@@ -607,6 +656,14 @@ a:hover {
   padding: 18px 22px 24px;
   border-top: 1px solid rgba(255, 255, 255, 0.08);
   background: rgba(14, 17, 25, 0.92);
+}
+
+.composer--minimal {
+  flex: 1;
+  align-items: flex-end;
+  padding-top: 22px;
+  border-top: none;
+  background: transparent;
 }
 
 .composer textarea {
