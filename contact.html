@@ -8,16 +8,90 @@
         <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
         <link rel="stylesheet" href="css/style.css">
     </head>
-<body>
+<body class="contact-page">
     <header class="site-header"><div class="page-header wrapper">
         <div class="header-brand"><h1><a class="home-link" href="profile.html">PROFILE</a></h1></div>
         <nav class="header-nav" aria-label="メインナビゲーション"><ul class="main-nav font-english">
-            <li class="dropdown"><a class="dropdown-toggle" href="#">game</a><ul class="dropdown-menu"><li><a href="overrwatch.html">Overwatch</a></li><li><a href="gensin.html">原神</a></li></ul></li>
+            <li class="dropdown"><a class="dropdown-toggle" href="#">game</a><ul class="dropdown-menu"><li><a href="overwatch.html">Overwatch</a></li><li><a href="gensin.html">原神</a></li></ul></li>
             <li class="dropdown"><a class="dropdown-toggle" href="#">music</a><ul class="dropdown-menu"><li><a href="mrs.greenapple.html">Mrs. GREEN APPLE</a></li><li><a href="yoasobi.html">YOASOBI</a></li></ul></li>
             <li><a href="index.html">home</a></li>
+            <li class="contact-item"><a href="contact.html">contact</a></li>
         </ul></nav>
     </div></header>
-    <main><h2>連絡先</h2><p><a href="mailto:example@example.com">example@example.com</a></p></main>
+
+    <main class="contact-shell">
+        <section class="contact-panel" aria-label="連絡先メッセージ">
+            <aside class="contact-sidebar">
+                <div class="sidebar-header">
+                    <p class="sidebar-label">Messages</p>
+                    <button type="button" class="sidebar-action" aria-label="新しいメッセージ">＋</button>
+                </div>
+
+                <ul class="contact-list" aria-label="連絡一覧">
+                    <li class="contact-card active">
+                        <span class="contact-avatar">P</span>
+                        <div class="contact-meta">
+                            <strong>Profile</strong>
+                            <small>最近のメッセージ</small>
+                        </div>
+                    </li>
+                    <li class="contact-card">
+                        <span class="contact-avatar">G</span>
+                        <div class="contact-meta">
+                            <strong>Game</strong>
+                            <small>おすすめもあり</small>
+                        </div>
+                    </li>
+                    <li class="contact-card">
+                        <span class="contact-avatar">M</span>
+                        <div class="contact-meta">
+                            <strong>Music</strong>
+                            <small>邦楽が好き</small>
+                        </div>
+                    </li>
+                </ul>
+            </aside>
+
+            <div class="chat-window">
+                <header class="chat-header">
+                    <div class="chat-user">
+                        <span class="chat-avatar">P</span>
+                        <div>
+                            <h2>Profile</h2>
+                            <p>オンライン</p>
+                        </div>
+                    </div>
+                    <a href="mailto:example@example.com" class="chat-mail">Mail</a>
+                </header>
+
+                <div class="chat-body" aria-live="polite">
+                    <div class="message message--incoming">
+                        <span class="message-time">09:14</span>
+                        <p>こんにちは！このサイトを見て、興味が出てきました。</p>
+                    </div>
+                    <div class="message message--outgoing">
+                        <span class="message-time">09:16</span>
+                        <p>ありがとうございます。どんなことに興味を持っていただけましたか？</p>
+                    </div>
+                    <div class="message message--incoming">
+                        <span class="message-time">09:18</span>
+                        <p>ゲームや音楽、プロフィールの内容がすごく好きです。</p>
+                    </div>
+                    <div class="message message--outgoing">
+                        <span class="message-time">09:19</span>
+                        <p>嬉しいです。ぜひ連絡をください。話したいことがたくさんあります。</p>
+                    </div>
+                </div>
+
+                <form class="composer" action="mailto:example@example.com" method="post" enctype="text/plain">
+                    <label class="sr-only" for="dm-message">メッセージ</label>
+                    <textarea id="dm-message" name="message" rows="1" placeholder="メッセージを入力"></textarea>
+                    <button type="submit">Send</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
     <footer class="site-footer"></footer>
     <script src="js/scripts.js"></script>
 </body>

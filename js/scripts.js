@@ -114,8 +114,12 @@ if (slider) {
             const video = slide.querySelector('video');
             if (!video) return;
             if (isActive) {
+                video.muted = true;
                 video.currentTime = 0;
-                video.play().catch(() => {});
+                const playPromise = video.play();
+                if (playPromise && typeof playPromise.catch === 'function') {
+                    playPromise.catch(() => {});
+                }
             } else {
                 video.pause();
             }
